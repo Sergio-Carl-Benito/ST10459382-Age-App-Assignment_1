@@ -3,6 +3,7 @@ package com.example.ageapp
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -27,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         resetButton?.setOnClickListener {
             enterAge.editableText.clear()
             textOutput.text = "Waiting for your age"
-
+            // Logging reset button click
+            Log.d("MainActivity", "Reset button clicked")
         }
 
         // checking the condition of the submit button, checking if it has been pressed or not
@@ -36,6 +38,9 @@ class MainActivity : AppCompatActivity() {
             // converting enterAge to a int and storing it in a variable called age
             // Getting age from user input
             val age: Int = enterAge.text.toString().toInt()
+            // Logging submitted age
+            Log.d("MainActivity", "Submitted age: $age")
+
 
 // Checking if age is within range
             if (age in 20..100) {
@@ -126,6 +131,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 // Outputting the matched age text
                 textOutput.text = matchAge
+                // Logging matched age
+                Log.d("MainActivity", "Matched age: $age")
             } else {
                 // If age is not within the range, display a toast message
                 Toast.makeText(
@@ -135,6 +142,8 @@ class MainActivity : AppCompatActivity() {
                 ).show()
                 // Also update the text output accordingly
                 textOutput.text = "Your age is not within 20 to 100 years old"
+                // Logging age out of range
+                Log.d("MainActivity", "Age out of range: $age")
             }
 
         }
